@@ -351,11 +351,12 @@ Custom property | Description | Default
           return
         
         var this$ = this;
+        var autoProceedInterval;
         function clear() {
           clearInterval(this._autoProceedInterval);
         }
         function setInt() {
-          this._autoProceedInterval = setInterval(function() {
+          autoProceedInterval = setInterval(function() {
             this$.moveNext();
             console.log("moving!");
           }, (this$.slideDuration * 1000));
@@ -364,11 +365,11 @@ Custom property | Description | Default
         if(this.autoProgress) {
           setInt()
           this.$.container.addEventListener("mouseover", function(){
-            clearInterval(this._autoProceedInterval);
+            clearInterval(autoProceedInterval);
           });
           this.$.container.addEventListener("mouseout", setInt);
         } else {
-          clearInterval(this._autoProceedInterval);
+          clearInterval(autoProceedInterval);
           this.$.container.removeEventListener("mouseout", setInt);
         }
       },
