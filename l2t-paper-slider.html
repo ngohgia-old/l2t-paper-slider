@@ -359,12 +359,10 @@ Custom property | Description | Default
         if(this.autoProgress) {
           setInt();
           this.$.container.addEventListener("mouseover", clear);
-          this.$.container.addEventListener("progress-stop", clear);
           this.$.container.addEventListener("mouseout", setInt);
         } else {
-          this.$.container.fire('progress-stop');
+          clear();
           this.$.container.removeEventListener("mouseover", clear);
-          this.$.container.removeEventListener("progress-stop", clear);
           this.$.container.removeEventListener("mouseout", setInt);
         }
       },
