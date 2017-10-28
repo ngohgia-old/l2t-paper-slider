@@ -355,8 +355,7 @@ Custom property | Description | Default
           clearInterval(autoProceedInterval);
         }
         function setInt() {
-          console.log(this$);
-          if(this.autoProgress) {
+          if(this$.autoProgress) {
             autoProceedInterval = setInterval(function() {
               this$.moveNext();
             }, (this$.slideDuration * 1000));
