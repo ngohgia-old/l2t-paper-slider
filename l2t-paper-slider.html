@@ -347,12 +347,13 @@ Custom property | Description | Default
       *
       */
       _autoProceed: function() {
+        var this$ = this;
         function clear() {
           clearInterval(this._autoProceedInterval);
         }
         function setInt() {
           this._autoProceedInterval = setInterval(function() {
-            this.moveNext();
+            this$.moveNext();
           }, (this.slideDuration * 1000));
         }
         if(this.autoProgress) {
