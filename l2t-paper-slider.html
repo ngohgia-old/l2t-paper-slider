@@ -353,7 +353,7 @@ Custom property | Description | Default
         var this$ = this;
         var autoProceedInterval;
         function clear() {
-          clearInterval(this._autoProceedInterval);
+          clearInterval(autoProceedInterval);
         }
         function setInt() {
           autoProceedInterval = setInterval(function() {
@@ -364,9 +364,7 @@ Custom property | Description | Default
         console.log(this$.slideDuration);
         if(this.autoProgress) {
           setInt()
-          this.$.container.addEventListener("mouseover", function(){
-            clearInterval(autoProceedInterval);
-          });
+          this.$.container.addEventListener("mouseover", clear);
           this.$.container.addEventListener("mouseout", setInt);
         } else {
           clearInterval(autoProceedInterval);
