@@ -209,6 +209,7 @@ Custom property | Description | Default
           type: Boolean,
           value: false,
           notify: true,
+          observer: '_autoProceed'
         },
         /**
         * Boolean value to
@@ -347,17 +348,25 @@ Custom property | Description | Default
       */
       _autoProceed: function() {
         var this$ = this;
-        var autoProceed = setInterval(function() {
-          this$.moveNext();
-        }, (this$.slideDuration * 1000));
-        this.$.container.addEventListener("mouseover", function() {
+        function clear() {
           clearInterval(autoProceed);
-        });
-        this.$.container.addEventListener("mouseout", function() {
+        }
+        function setInt() {
           autoProceed = setInterval(function() {
             this$.moveNext();
           }, (this$.slideDuration * 1000));
-        });
+        }
+        if(this.autoProgress) {
+          setInt();
+          this.$.container.addEventListener("mouseover", clear);
+          this.$.container.addEventListener("progress-stop", clear);
+          this.$.container.addEventListener("mouseout", setInt);
+        } else {
+          this.$.container.fire('progress-stop');
+          this.$.container.removeEventListener("mouseover", clear);
+          this.$.container.removeEventListener("progress-stop", clear);
+          this.$.container.removeEventListener("mouseout", setInt);
+        }
       },
       /**
       * Create the nav dots,
