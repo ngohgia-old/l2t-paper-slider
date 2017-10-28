@@ -362,7 +362,7 @@ Custom property | Description | Default
           this.$.container.addEventListener("mouseover", clear);
           this.$.container.addEventListener("mouseout", setInt);
         } else {
-          clear();
+          clearInterval(this._autoProceedInterval);
           this.$.container.removeEventListener("mouseover", clear);
           this.$.container.removeEventListener("mouseout", setInt);
         }
