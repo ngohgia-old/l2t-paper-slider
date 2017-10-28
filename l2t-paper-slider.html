@@ -350,10 +350,10 @@ Custom property | Description | Default
         var this$ = this;
         clearInterval(autoProceed);
         function clear() {
-          clearInterval(autoProceed);
+          clearInterval(this._autoProceed);
         }
         function setInt() {
-          autoProceed = setInterval(function() {
+          this._autoProceed = setInterval(function() {
             this$.moveNext();
           }, (this$.slideDuration * 1000));
         }
