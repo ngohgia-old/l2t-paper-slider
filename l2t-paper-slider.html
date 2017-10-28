@@ -348,6 +348,8 @@ Custom property | Description | Default
       */
       _autoProceed: function() {
         var this$ = this;
+        var autoProceed;
+        clearInterval(autoProceed);
         function clear() {
           clearInterval(autoProceed);
         }
@@ -357,6 +359,7 @@ Custom property | Description | Default
           }, (this$.slideDuration * 1000));
         }
         if(this.autoProgress) {
+          setInt();
           this.$.container.addEventListener("mouseover", clear);
           this.$.container.addEventListener("mouseout", setInt);
         } else {
