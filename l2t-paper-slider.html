@@ -357,15 +357,14 @@ Custom property | Description | Default
         function setInt() {
           autoProceedInterval = setInterval(function() {
             this$.moveNext();
-            console.log("moving!");
           }, (this$.slideDuration * 1000));
         }
-        console.log(this$.slideDuration);
         if(this.autoProgress) {
           setInt()
           this.$.container.addEventListener("mouseover", clear);
           this.$.container.addEventListener("mouseout", setInt);
         } else {
+          console.log('False now')
           clearInterval(autoProceedInterval);
           this.$.container.removeEventListener("mouseout", setInt);
         }
