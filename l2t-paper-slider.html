@@ -355,9 +355,9 @@ Custom property | Description | Default
           this._autoProceedInterval = setInterval(function() {
             this$.moveNext();
             console.log("moving!");
-          }, (this.slideDuration));
+          }, (this.slideDuration * 1000));
         }
-        console.log(this.slideDuration * 1000);
+        console.log(this$.slideDuration);
         if(this.autoProgress) {
           //setInt()
           this.$.container.addEventListener("mouseover", clear);
