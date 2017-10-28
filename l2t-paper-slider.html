@@ -363,11 +363,12 @@ Custom property | Description | Default
         console.log(this$.slideDuration);
         if(this.autoProgress) {
           setInt()
-          this.$.container.addEventListener("mouseover", clear);
+          this.$.container.addEventListener("mouseover", function(){
+            clearInterval(this._autoProceedInterval);
+          });
           this.$.container.addEventListener("mouseout", setInt);
         } else {
           clearInterval(this._autoProceedInterval);
-          this.$.container.removeEventListener("mouseover", clear);
           this.$.container.removeEventListener("mouseout", setInt);
         }
       },
