@@ -359,7 +359,9 @@ Custom property | Description | Default
           }, (this$.slideDuration * 1000));
         }
         if(this.autoProgress) {
-          setInt();
+          autoProceed = setInterval(function() {
+            this$.moveNext();
+          }, (this$.slideDuration * 1000));
           this.$.container.addEventListener("mouseover", clear);
           this.$.container.addEventListener("mouseout", setInt);
         } else {
