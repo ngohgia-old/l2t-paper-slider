@@ -347,6 +347,9 @@ Custom property | Description | Default
       *
       */
       _autoProceed: function() {
+        if(isNaN(this.slideDuration))
+          return
+        
         var this$ = this;
         function clear() {
           clearInterval(this._autoProceedInterval);
