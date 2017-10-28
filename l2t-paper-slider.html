@@ -355,9 +355,11 @@ Custom property | Description | Default
           clearInterval(autoProceedInterval);
         }
         function setInt() {
-          autoProceedInterval = setInterval(function() {
-            this$.moveNext();
-          }, (this$.slideDuration * 1000));
+          if(this.autoProgress) {
+            autoProceedInterval = setInterval(function() {
+              this$.moveNext();
+            }, (this$.slideDuration * 1000));
+          }
         }
         if(this.autoProgress) {
           setInt()
@@ -366,7 +368,6 @@ Custom property | Description | Default
           console.log(this.slideDuration);
         } else {
           clear();
-          this.$.container.removeEventListener("mouseout", setInt);
         }
       },
       /**
